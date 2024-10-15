@@ -2,26 +2,141 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #fefefe;
+    --foreground: #171717;
+
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #fefefe;
+    }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+
+@media (max-width: 1080px) {
+    .portfolio {
+        line-height: 0;
+        -webkit-column-count: 2;
+        -webkit-column-gap: 0px;
+        -moz-column-count: 2;
+        -moz-column-gap: 0px;
+        column-count: 2;
+        column-gap: 0px;
+    }
+
+    main {
+        width: 75dvw;
+    }
+
+    .logo {
+        width: 60px;
+        height: auto !important;
+    }
+
+    footer {
+        padding: 25px 7.5% 40px 5%;
+    }
+}
+
+@media (max-width: 460px) {
+    .portfolio {
+        line-height: 0;
+        -webkit-column-count: 1;
+        -webkit-column-gap: 0px;
+        -moz-column-count: 1;
+        -moz-column-gap: 0px;
+        column-count: 1;
+        column-gap: 0px;
+
+    }
+
+    main {
+        width: 85dvw;
+    }
+
+    .logo {
+        width: 50px;
+        height: auto !important;
+    }
+
+    footer {
+        padding: 25px 7.5% 40px 7.5%;
+    }
+}
+
+@media (min-width: 1080px) {
+    .portfolio {
+        line-height: 0;
+        -webkit-column-count: 3;
+        -webkit-column-gap: 0px;
+        -moz-column-count: 3;
+        -moz-column-gap: 0px;
+        column-count: 3;
+        column-gap: 0px;
+    }
+
+    main {
+        width: 75dvw;
+    }
+
+    .logo {
+        width: 75px;
+        height: auto !important;
+    }
+
+    footer {
+        padding: 25px 10% 40px 10%;
+    }
+}
+
+@media (min-width: 1280px) {
+    .portfolio {
+        line-height: 0;
+        -webkit-column-count: 3;
+        -webkit-column-gap: 0px;
+        -moz-column-count: 3;
+        -moz-column-gap: 0px;
+        column-count: 3;
+        column-gap: 0px;
+    }
+
+    main {
+        width: 75dvw;
+    }
+
+    .logo {
+        width: 75px;
+        height: auto !important;
+    }
+
+    footer {
+        padding: 25px 12.5% 40px 12.5%;
+    }
+}
+
+header {
+    top: 0;
+}
+
+.card-gradient {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.65) 0%, rgba(255, 255, 255, 0) 90%);
 }
