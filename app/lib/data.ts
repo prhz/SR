@@ -12,7 +12,7 @@ const googleAuth = new google.auth.JWT(
 // google drive API access
 const driveAPI = google.drive({ version: 'v3', auth: googleAuth })
 
-// list photos by parent folder id
+// list photos by parent folder idk
 export async function listPhotos(folderId: string): Promise<Photo[]> {
     const response = await driveAPI.files.list({
         q: `'${folderId}' in parents`,
@@ -77,7 +77,7 @@ export async function getFolder(name: string): Promise<Folder | undefined> {
 export async function listFolders(folderId: string): Promise<Folder[]> {
     const response = await driveAPI.files.list({
         q: `'${folderId}' in parents`,
-        fields: 'files(id,name,webContentLink)',
+        fields: 'files(kind,id,name,webContentLink)',
         key: process.env.API_KEY
     })
     // if files is undefined, log API response and throw error
@@ -86,13 +86,17 @@ export async function listFolders(folderId: string): Promise<Folder[]> {
         throw new Error('response.data.files is undefined or null')
     }
 
+    console.table(response.data.files)
+
     const folders = (await Promise.all(
-        response.data.files.map(async (file) => file.webContentLink ? undefined : ({
-            id: file.id!,
-            name: file.name!,
-            backgroundImage: await getBackgroundImage(file.id!)
-        }))
-    )).filter(folder => folder !== undefined)
+        response.data.files
+            .filter(file => file.webContentLink === undefined)
+            .map(async (file) => ({
+                id: file.id!,
+                name: file.name!,
+                backgroundImage: await getBackgroundImage(file.id!)
+            }))
+    ))
 
     // return only validated folders
     return folders.filter(utils.validateFolderData)

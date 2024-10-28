@@ -6,17 +6,17 @@ export default function PhotoCard({ photo, onClick }: { photo: Photo, onClick: (
     return (
         <div
             key={photo.id}
-            className="group flex float-left relative w-full h-fit p-[2px] rounded cursor-pointer"
+            className="relative float-left flex py-[2px] rounded w-full h-fit cursor-pointer group"
             onClick={onClick}
         >
-            <div className="relative w-full rounded bg-[#dfdfdf] dark:bg-[#3a3a3a]">
+            <div className="relative bg-[#dfdfdf] dark:bg-[#3a3a3a] rounded w-full">
                 <Expand />
                 <Image
                     src={photo.url} alt={photo.id}
                     width={photo.width} height={photo.height}
-                    className="w-full h-auto rounded"
                     quality={100}
                     loading="lazy"
+                    className="rounded w-full h-auto"
                 />
             </div>
         </div>

@@ -18,7 +18,7 @@ export default function Portfolio({ photos }: { photos: Photo[] }) {
         <>
             {popout && (<Popout popout={popout.url} onClick={() => { setPopout(undefined) }} />)}
 
-            <div className="portfolio my-5">
+            <div className="flex-inline my-5 columns-sm gap-[4px]">
                 {photos.map(photo => (<PhotoCard key={photo.id} photo={photo} onClick={() => { setPopout(photo) }} />))}
             </div>
         </>
